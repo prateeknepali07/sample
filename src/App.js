@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter , Route } from 'react-router-dom';
 import './App.css';
-import Header from './components/header/Header';
+import HomePage from "./pages/homePage/HomePage";
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Header />
-        This is Hello React
-      </div>
+      <BrowserRouter>
+        <Route path="/" component={HomePage} exact />
+        <Route path="/about" component={About} />
+      </BrowserRouter>
     );
   }
 }
