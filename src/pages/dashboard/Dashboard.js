@@ -179,7 +179,7 @@ export default class Dashboard extends Component {
                 </div>
                 <button className="btn col s4" style={{
                   marginTop: "15px"
-                }} onClick={this.savePhoneNumber}>Add your Phone Number</button>
+                }} onClick={this.savePhoneNumber}>Save</button>
               </div> 
             </div>         
           ) : <div />}
@@ -193,7 +193,7 @@ export default class Dashboard extends Component {
                 </div>
                 <button className="btn col s4" style={{
                   marginTop: "15px"
-                }} onClick={this.savePhoneNumber}>Add Relative's Phone Number</button>
+                }} onClick={this.savePhoneNumber}>Save</button>
               </div> 
             </div>         
           ) : <div />}
@@ -211,9 +211,9 @@ export default class Dashboard extends Component {
                   fontSize: "100px"
                 }}></i>
               </button>  
+              <h4 className="center-align red-text">Press the Danger Button if you feel you are in risk.</h4>
             </div>: <div />}
         </div>
-        <h4 className="center-align red-text">Press the Danger Button if you feel you are in risk.</h4>
       </div>
     )
   }
