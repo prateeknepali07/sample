@@ -118,10 +118,12 @@ export default class Dashboard extends Component {
 
   createGoogleMap = position => {
     const url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&key=AIzaSyCOpQNtna1iI9EWsSZbDuz7HfgMr6tDGeU";
+    const data = "<img width="600" src="https://maps.googleapis.com/maps/api/staticmap?center=Albany,+NY&zoom=13&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map of Albany, NY">"
     axios.get(url)
       .then(function (response) {
         // handle success
-        console.log(response);
+        const result = response.data.results[0].formatted_address;
+        const newUrl = "https://maps.googleapis.com/maps/api/staticmap?center=" + result + "&zoom=13&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true";
       })
       .catch(function (error) {
         // handle error
