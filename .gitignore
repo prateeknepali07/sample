@@ -10,7 +10,7 @@
 /build
 
 # config
-/src/config
+/src/keys
 
 # misc
 .DS_Store
