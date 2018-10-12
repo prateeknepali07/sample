@@ -1,1 +1,1 @@
-this is a sample projects
+Project for Hackathon

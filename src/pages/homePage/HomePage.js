@@ -1,16 +1,34 @@
 import React, { Component } from 'react'
 import Header from "../../components/header/Header";
 import Footer from '../../components/footer/Footer';
+import firebase from "../../config/firebase"
 
 export default class HomePage extends Component {
   constructor(props){
     super(props);
-    this.deferredPrompt = {};
+    this.state = {
+      isLoggedIn: false
+    }
   }
   componentWillMount(){
     window.M.AutoInit();
     var instance = window.M.Carousel.init({
       fullWidth: true
+    });
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        console.log(user);
+        this.setState({
+          isLoggedIn: true
+        });
+        this.props.history.push("/dashboard");
+      } else {
+        // No user is signed in.
+        console.log("No user logged in");
+        this.setState({
+          isLoggedIn: false
+        });
+      }
     });
   }
   componentDidMount(){
@@ -23,12 +41,7 @@ export default class HomePage extends Component {
         <div className="container" style={{
           marginTop: "15px"
         }}>
-          <div class="carousel carousel-slider">
-            <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/800/400/food/1" /></a>
-            <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/800/400/food/2" /></a>
-            <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/800/400/food/3" /></a>
-            <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/800/400/food/4" /></a>
-          </div>
+          check
         </div>
         <Footer />
       </div>
