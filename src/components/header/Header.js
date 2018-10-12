@@ -38,7 +38,7 @@ export default class Header extends Component {
         }
       }).catch(function(error) {
           console.log("Error getting document:", error);
-          window.M.toast({html: "Please, try again"});
+          
       });
       // ...
     }).catch(error => {

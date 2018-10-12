@@ -1,4 +1,5 @@
 import React, { Component , Fragment } from 'react';
+import axios from 'axios';
 import Header from '../../components/header/Header';
 import firebase from '../../config/firebase';
 import fire from 'firebase';
@@ -100,12 +101,37 @@ export default class Dashboard extends Component {
       });
   }
 
+  clickDangerButton = () => {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.createGoogleMap);
+    } else {
+        console.log("Geolocation is not supported by this browser.");
+    }
+  }
+
   onChangeHandler = event => {
     this.setState({
       [event.target.id]: event.target.value
     });
     console.log(event.target.value);
   }
+
+  createGoogleMap = position => {
+    const url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&key=AIzaSyCOpQNtna1iI9EWsSZbDuz7HfgMr6tDGeU";
+    axios.get(url)
+      .then(function (response) {
+        // handle success
+        console.log(response);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+  }
+
   render() {
     return (
       <div>
@@ -161,14 +187,14 @@ export default class Dashboard extends Component {
             <div style={{
               marginTop: "150px"
             }}>
-              <button className="btn red" style={{
+              <button className="btn red center-align" style={{
                 borderRadius: "50%",
                 height: "200px",
                 width: "200px"
-              }}>
-                <h5>
-                Press if you are in DANGER!!!!
-                </h5>
+              }} onClick={this.clickDangerButton}>
+                <i class="fas fa-exclamation-triangle" style={{
+                  fontSize: "100px"
+                }}></i>
               </button>  
             </div>: <div />}
         </div>
