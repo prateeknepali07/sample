@@ -88,6 +88,34 @@ export default class HomePage extends Component {
             </div>
           </div>
         </div>
+        <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+            <h5 class="center">Nobody can protect you better than yourself! Trust your instincts and fight back!</h5>
+
+            <p class="light">We did most of the heavy lifting for you to provide a good companion.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+            <h5 class="center">You are our first priority</h5>
+
+            <p class="light">We worship women so it's our first priority to take care of you.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
+            <h5 class="center">Easy to work with</h5>
+
+            <p class="light">We have provided you the app which is the easiest to use.</p>
+          </div>
+        </div>
+      </div>
         <Footer />
       </div>
     );

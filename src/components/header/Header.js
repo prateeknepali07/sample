@@ -91,7 +91,6 @@ export default class Header extends Component {
           })
           .catch(function(error) {
             console.log("Error getting document:", error);
-            window.M.toast({ html: "Please, try again" });
           });
         // ...
       })
@@ -150,19 +149,24 @@ export default class Header extends Component {
                   Sign up or sign in
                 </button>
               )}
-              &nbsp;&nbsp;
-              <Link to="/about" className="btn blue">
-                About
-              </Link>
             </div>
           </div>
         </nav>
         <ul class="sidenav" id="mobile-demo">
           <li>
             <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
+            {this.props.isLoggedIn ? (
+                <button class="btn modal-trigger red" onClick={this.logout}>
+                  Logout
+                </button>
+              ) : (
+                <button
+                  data-target="signinmodal"
+                  class="btn modal-trigger green darken-2"
+                >
+                  Sign up or sign in
+                </button>
+              )}
           </li>
         </ul>
         <div

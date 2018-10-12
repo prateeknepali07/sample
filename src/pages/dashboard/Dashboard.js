@@ -3,6 +3,7 @@ import axios from 'axios';
 import Header from '../../components/header/Header';
 import firebase from '../../config/firebase';
 import fire from 'firebase';
+import image6 from "../../images/11.jpg";
 
 var db = firebase.firestore();
 db.settings({
@@ -71,6 +72,17 @@ export default class Dashboard extends Component {
     })
   }
 
+  saveRealtivePhoneNumber = () => {
+    db.collection("users").doc(this.state.uid).update({
+      phoneNumberRelatives: this.state.phoneNumber,
+      phoneNumberRelativesReceived: true
+    }).then(() => {
+      console.log("Phone number saved");
+    }).catch(() => {
+      console.log("Failed")
+    })
+  }
+
   recaptchaVerifier = () => {
     window.recaptchaVerifier = new fire.auth.RecaptchaVerifier('sign-in-button', {
       'size': 'invisible',
@@ -118,7 +130,6 @@ export default class Dashboard extends Component {
 
   createGoogleMap = position => {
     const url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&key=AIzaSyCOpQNtna1iI9EWsSZbDuz7HfgMr6tDGeU";
-    const data = "<img width="600" src="https://maps.googleapis.com/maps/api/staticmap?center=Albany,+NY&zoom=13&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map of Albany, NY">"
     axios.get(url)
       .then(function (response) {
         // handle success
@@ -136,13 +147,15 @@ export default class Dashboard extends Component {
 
   render() {
     return (
-      <div>
+      <div className="orange" style={{
+        height: "700px"
+      }}>
         <Header isLoggedIn={true} />
         <div className="container center-align">
         {this.state.isLoading  ?
            <div class="preloader-wrapper big active" style={{
               position: "fixed",
-              background: "white",
+              background: "transparent",
               top: "40%",
               left: "48%"
            }}>
@@ -161,8 +174,8 @@ export default class Dashboard extends Component {
               <h5>You haven't added your phone number!! </h5>
               <div className="row">
                 <div class="input-field col s8">
-                  <input id="phone_number" id="phoneNumber" type="tel" className="active" onChange={this.onChangeHandler} />
-                  <label for="phone_number">Your Phone Number</label>
+                  <input id="phoneNumber" type="tel" className="active" onChange={this.onChangeHandler} />
+                  <label for="phoneNumber">Your Phone Number</label>
                 </div>
                 <button className="btn col s4" style={{
                   marginTop: "15px"
@@ -175,8 +188,8 @@ export default class Dashboard extends Component {
               <h5>You haven't added your relatives phone number!!</h5>
               <div className="row">
                 <div class="input-field col s8">
-                  <input id="phone_number_relative" id="phoneNumber" type="tel" onChange={this.onChangeHandler} />
-                  <label for="phone_number_relative">Relative's Phone Number</label>
+                  <input id="phoneNumberRelative" type="tel" onChange={this.onChangeHandler} />
+                  <label for="phoneNumberRelative">Relative's Phone Number</label>
                 </div>
                 <button className="btn col s4" style={{
                   marginTop: "15px"
@@ -200,6 +213,7 @@ export default class Dashboard extends Component {
               </button>  
             </div>: <div />}
         </div>
+        <h4 className="center-align red-text">Press the Danger Button if you feel you are in risk.</h4>
       </div>
     )
   }

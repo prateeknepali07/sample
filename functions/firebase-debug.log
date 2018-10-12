@@ -1,0 +1,12 @@
+[debug] [2018-10-12T10:44:58.207Z] ----------------------------------------------------------------------
+[debug] [2018-10-12T10:44:58.209Z] Command:       /home/akshaymahajan/.nvm/versions/node/v10.10.0/bin/node /usr/bin/firebase deploy --only functions
+[debug] [2018-10-12T10:44:58.209Z] CLI Version:   4.2.1
+[debug] [2018-10-12T10:44:58.209Z] Platform:      linux
+[debug] [2018-10-12T10:44:58.209Z] Node Version:  v10.10.0
+[debug] [2018-10-12T10:44:58.210Z] Time:          Fri Oct 12 2018 16:14:58 GMT+0530 (India Standard Time)
+[debug] [2018-10-12T10:44:58.210Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-12T10:44:58.219Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-12T10:44:58.219Z] > authorizing via signed-in user
+[debug] [2018-10-12T10:44:58.221Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/sample-ada8e  
+ 
